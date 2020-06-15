@@ -1,0 +1,35 @@
+<div class="form-group row ">
+    <div class="col-xs-4">
+    <form name="searchById">
+        <div class="form-group searchbar">
+            <label for="code">Search By Company Code:</label>
+            <input  placeholder="Enter 3 digit code" name="code" class="form-control"  (keyup)="searchById($event)" >
+          </div>
+        
+    </form>
+</div>
+</div>
+  <div class="containTable">
+    <table   class="table table-striped">
+    <thead>
+    <tr>
+      <th>Company Code</th>
+      <th>Company Name</th>
+      <th>Last Modified By</th>
+      <th>Last Modified On</th>
+      <th>Action</th>
+    </tr>
+    </thead>    
+    <tbody>
+        <tr *ngFor="let company of companyList">
+            <td>{{company.code}}</td>
+            <td>{{company.name}}</td>
+            <td>{{company.lastModifiedBy}}</td>
+            <td>{{company.lastModifiedOn|date:'EEEE, MMM d y, h:mm:ss a' }}</td>
+            <td><button class="btn btn-danger" (click)="deleteCompany(company)"> Delete </button>  <button class="btn btn-info" routerLink="/add-company/{{company.code}}"> Edit </button></td>
+        </tr>
+    </tbody>
+      </table> 
+    </div>
+
+      

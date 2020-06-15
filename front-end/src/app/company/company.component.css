@@ -1,0 +1,14 @@
+tbody{
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+    background-size: cover;
+    float: center;
+}
+/* .dataTables_filter, .dataTables_info { display: none !important; } */
+.containTable{padding-top: 75px;}
+.searchbar{
+    float: right;
+    position: fixed;
+    right: 10px;
+}

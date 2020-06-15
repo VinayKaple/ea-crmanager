@@ -1,0 +1,14 @@
+<header>
+    <nav class ="navbar navbar-expand-md bg-danger">
+    <div><a class="navbar-brand text-white" routerLink="/" ><h2>Dynamic Analytics </h2><i>Company Records Manager</i></a></div>
+    
+    <ul class="navbar-nav">
+       
+      <li><button class="btn btn-success" *ngIf="loginService.isUserLoggedIn()"><a routerLink="/add-company" class="nav-link text-white">Add New Company</a></button></li>
+      
+    </ul>
+    <div class="logoutBtn"><button class="btn btn-dark btn-pull-right" *ngIf="loginService.isUserLoggedIn()"><a  routerLink="/logout" class="nav-link text-white">Logout</a></button>
+    </div>
+    </nav>
+    
+</header>

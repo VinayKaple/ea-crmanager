@@ -1,0 +1,100 @@
+<div class="col-md-12">
+    <h2 class="text-center">Add/Edit Company Record</h2>
+    
+    <form name="CompanyRec" #f="ngForm" > 
+      <div class="form-group">
+
+         <label for="code"> Company Code*</label>
+        <input type="text" #code="ngModel" [(ngModel)]="company.code" placeholder="Code" name="code" class="form-control" id="code" required [disabled]="isEditing" minlength="3" maxlength="3" pattern="^[0-9]*$">
+        <div *ngIf="code.invalid && (code.dirty || code.touched)" class="alert alert-danger">
+            <div *ngIf="code.errors.required">Company code is required.</div>
+            <div *ngIf="code.errors.minlength">Company code cannot be more than 3 characters long.</div>
+            <div *ngIf="code.errors.minlength">Company code  must be at least 3 characters long.</div>
+            <div *ngIf="code.errors.pattern">Only Number.</div>
+        </div>
+      </div>
+    
+      <div class="form-group">
+        <label for="codeHRIS">Company Code HRIS*</label>
+        <input #codeHRIS="ngModel" [(ngModel)]="company.codeHRIS" placeholder="CodeHRIS" name="codeHRIS" class="form-control" id="codeHRIS"  [disabled]="isEditing"   pattern="[a-zA-Z ]*" required minlength="3" maxlength="3">
+        <div *ngIf="codeHRIS.invalid && (codeHRIS.dirty || codeHRIS.touched)" class="alert alert-danger">
+        <div *ngIf="codeHRIS.errors.required">Company code is required.</div>
+            <div *ngIf="codeHRIS.errors.minlength">Company code cannot be more than 3 characters long.</div>
+            <div *ngIf="codeHRIS.errors.minlength">Company code  must be at least 3 characters long.</div>
+        <div *ngIf="codeHRIS.errors.pattern">Only characters.</div>
+        </div>
+    </div>
+    
+      <div class="form-group">
+        <label for="name">Company Name*</label>
+        <input [(ngModel)]="company.name" placeholder="name" name="name" class="form-control" id="name" required>
+      </div>
+      <div class="form-group">
+        <label for="abbrName">Company Abbr. Name*</label>
+        <input [(ngModel)]="company.abbrName" placeholder="CodeHRIS" name="abbrName" class="form-control" id="abbrName" required>
+      </div>
+      <div class="form-group">
+        <label for="regNo">Company Reg. No.</label>
+        <input type="regNo" [(ngModel)]="company.regNo" placeholder="RegNo" name="regNo" class="form-control" id="regNo">
+      </div>
+      <div class="form-group">
+        <label for="logo">Company Logo</label>
+      <input 
+      [(ngModel)]="company.logo"
+            id="file" 
+            type="file" 
+            class="form-control"
+            name="logo"
+            accept="image/x-png,image/jpeg" 
+           >
+      </div>
+      <div class="form-group">
+        <label for="isActive">Status*</label>
+        <select [(ngModel)]="company.isActive" name="isActive" class="form-control" id="isActive">
+            <option value="true"> Active</option>
+            <option value="false">Inactive</option>
+        </select>
+      </div>
+      <div  *ngIf="isEditing">
+      <div class="form-group">
+        <label for="createdBy">Created By</label>
+        <input [(ngModel)]="company.createdBy" placeholder="createdBy" name="createdBy" class="form-control" id="createdBy" readonly>
+      </div>
+      <div class="form-group">
+        <label for="createdOn">Created On</label>
+        <input [(ngModel)]="company.createdOn" name="createdOn" class="form-control" id="createdOn"  readonly>
+      </div>
+    
+      <div class="form-group">
+        <label for="lastModifiedBy">Last Modified By:</label>
+        <input [(ngModel)]="company.lastModifiedBy" placeholder="lastModifiedBy" name="lastModifiedBy" class="form-control" id="lastModifiedBy" readonly>
+      </div>
+    
+      <div class="form-group">
+        <label for="lastModifiedOn">Last Modified On</label>
+        <input [(ngModel)]="company.lastModifiedOn" placeholder="Last Modified On" name="lastModifiedOn" class="form-control" id="lastModifiedOn" readonly>
+      </div> 
+      <div class="form-group">
+        <label for="deactivatedBy">Deactivated By:</label>
+        <input [(ngModel)]="company.deactivatedBy" placeholder="deactivatedBy" name="deactivatedBy" class="form-control" id="deactivatedBy" readonly>
+      </div>
+    
+      <div class="form-group">
+        <label for="deactivatedOn">Deactivated On</label>
+        <input [(ngModel)]="company.deactivatedOn" placeholder="Last Modified On" name="deactivatedOn" class="form-control" id="deactivatedOn" readonly>
+      </div>        
+      <div class="form-group">
+        <label for="reactivatedBy">Reactivated By:</label>
+        <input [(ngModel)]="company.reactivatedBy" placeholder="reactivatedBy" name="reactivatedBy" class="form-control" id="reactivatedBy" readonly>
+      </div>
+    
+      <div class="form-group">
+        <label for="reactivatedOn">Reactivated On</label>
+        <input [(ngModel)]="company.reactivatedOn" placeholder="Last Modified On" name="reactivatedOn" class="form-control" id="reactivatedOn" readonly>
+      </div>  
+      </div>             
+    <div class="col-sm-6"> <button class="btn btn-success" (click)="createCompany()">Save</button> <span style="margin: 10px;"></span><button class="btn btn-warning"  *ngIf="!isEditing" (click)="resetCompany()">Reset</button></div>
+     
+    </form>
+
+    </div>
